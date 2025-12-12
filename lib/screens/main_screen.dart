@@ -21,7 +21,38 @@ class _MainScreenState extends State<MainScreen> {
         ),
         centerTitle: true,
       ),
-      body: Column(),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          spacing: 40,
+          children: [
+            Image.asset('assets/logo.png', width: 325),
+            SizedBox(
+              width: 325,
+              child: ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                  padding: EdgeInsets.symmetric(vertical: 15),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadiusGeometry.circular(8),
+                  ),
+                ),
+                child: Row(
+                  spacing: 10,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.qr_code_2, size: 30, color: Colors.white),
+                    Text(
+                      'Scan QR',
+                      style: TextStyle(fontSize: 15, color: Colors.white),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
