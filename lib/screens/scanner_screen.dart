@@ -17,6 +17,7 @@ class _ScannerScreenState extends State<ScannerScreen> {
   );
 
   bool isFlashOn = false;
+  String barcodeResult = "Point the camera at a barcode";
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +63,17 @@ class _ScannerScreenState extends State<ScannerScreen> {
       ),
       body: Stack(
         children: [
-          MobileScanner(controller: mobileScannerController),
+          MobileScanner(
+            controller: mobileScannerController,
+            onDetect: (capture) {
+              final List<Barcode> barcodes = capture.barcodes;
+              if (barcodes.isNotEmpty && barcodes.first.rawValue != null) {
+                setState(() {
+                  barcodeResult = barcodes.first.rawValue!;
+                });
+              }
+            },
+          ),
           Center(
             child: Container(
               width: 320,
@@ -71,6 +82,7 @@ class _ScannerScreenState extends State<ScannerScreen> {
               child: CustomPaint(painter: ScannerCornersPainter()),
             ),
           ),
+          Center(child: Text(barcodeResult)),
         ],
       ),
     );
