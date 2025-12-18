@@ -1,4 +1,4 @@
-package com.example.scan_qr_member
+package com.fiesto.crystal_x_scanner
 
 import io.flutter.embedding.android.FlutterActivity
 
